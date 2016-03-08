@@ -1,25 +1,291 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="On5-9n-Esk">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="oue-h0-tmV">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="On5-9n-Esk" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nvk-aP-u1Z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="i5D-KN-6cW" kind="relationship" relationship="rootViewController" id="4zB-pP-9wR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rTU-N7-wQs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-313.5" y="426"/>
+        </scene>
+        <!--Favorite Flickr Pics-->
+        <scene sceneID="kxY-xx-Gnc">
+            <objects>
+                <viewController id="i5D-KN-6cW" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="1fw-IH-Okj"/>
+                        <viewControllerLayoutGuide type="bottom" id="W6x-zy-nDK"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="FSX-y6-ejP" customClass="FlickrCollectionView" customModule="FavFlickrPhotos" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IGn-Kq-yJa" customClass="FlickrCollectionView" customModule="FavFlickrPhotos" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kM3-NP-VcL">
+                                    <size key="itemSize" width="207" height="125"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" reuseIdentifier="Cell" id="z4z-iy-EQ3" customClass="ImageCell" customModule="FavFlickrPhotos" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="207" height="125"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4bM-VM-LDA">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <variation key="widthClass=compact" fixedFrame="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="128"/>
+                                                    </variation>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="4bM-VM-LDA"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="4bM-VM-LDA"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="flickrImage" destination="4bM-VM-LDA" id="aIN-n5-DHC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell2" id="uPb-O6-QkY" customClass="SearchTermLabel" customModule="FavFlickrPhotos" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Term" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2bC-4C-uwl">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="64" y="15" width="257" height="21"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="2bC-4C-uwl"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="2bC-4C-uwl"/>
+                                        </mask>
+                                    </variation>
+                                    <connections>
+                                        <outlet property="searchTerm" destination="2bC-4C-uwl" id="CyX-oY-zkr"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="FSX-y6-ejP" id="set-Az-kFh"/>
+                                    <outlet property="delegate" destination="FSX-y6-ejP" id="dcW-Er-dzL"/>
+                                </connections>
+                            </collectionView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter your search term" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YaG-bJ-Flz">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="searchTextAction:" destination="FSX-y6-ejP" eventType="editingDidEndOnExit" id="ICe-1e-9hh"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IGn-Kq-yJa" firstAttribute="leading" secondItem="FSX-y6-ejP" secondAttribute="leading" id="Cml-yH-fpG"/>
+                            <constraint firstItem="YaG-bJ-Flz" firstAttribute="top" secondItem="1fw-IH-Okj" secondAttribute="bottom" id="ETe-Pc-NYF"/>
+                            <constraint firstItem="IGn-Kq-yJa" firstAttribute="bottom" secondItem="W6x-zy-nDK" secondAttribute="top" id="EUg-Dl-02w"/>
+                            <constraint firstItem="YaG-bJ-Flz" firstAttribute="leading" secondItem="FSX-y6-ejP" secondAttribute="leadingMargin" constant="5" id="JjR-iC-UX7">
+                                <variation key="widthClass=compact" constant="6"/>
+                            </constraint>
+                            <constraint firstItem="YaG-bJ-Flz" firstAttribute="centerX" secondItem="IGn-Kq-yJa" secondAttribute="centerX" id="eIh-LF-0e8"/>
+                            <constraint firstItem="YaG-bJ-Flz" firstAttribute="centerX" secondItem="FSX-y6-ejP" secondAttribute="centerX" id="xCm-ou-NnU"/>
+                            <constraint firstItem="IGn-Kq-yJa" firstAttribute="top" secondItem="YaG-bJ-Flz" secondAttribute="bottom" constant="19" id="y7p-Gv-iNZ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="IGn-Kq-yJa"/>
+                                <exclude reference="YaG-bJ-Flz"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="JjR-iC-UX7"/>
+                                <exclude reference="eIh-LF-0e8"/>
+                                <exclude reference="xCm-ou-NnU"/>
+                                <exclude reference="Cml-yH-fpG"/>
+                                <exclude reference="y7p-Gv-iNZ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="IGn-Kq-yJa"/>
+                                <include reference="YaG-bJ-Flz"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="JjR-iC-UX7"/>
+                                <include reference="eIh-LF-0e8"/>
+                                <include reference="xCm-ou-NnU"/>
+                                <include reference="Cml-yH-fpG"/>
+                                <include reference="y7p-Gv-iNZ"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outlet property="colView" destination="IGn-Kq-yJa" id="AHV-Ic-3Mn"/>
+                            <outlet property="collectionViewFlickr" destination="IGn-Kq-yJa" id="skZ-aT-fbs"/>
+                            <outlet property="searchText" destination="YaG-bJ-Flz" id="gbJ-5Y-P4z"/>
+                        </connections>
                     </view>
+                    <navigationItem key="navigationItem" title="Favorite Flickr Pics" id="L8o-7u-iBV">
+                        <barButtonItem key="rightBarButtonItem" title="Favorites" id="Xeh-su-eJz">
+                            <connections>
+                                <segue destination="iqq-ts-7eV" kind="show" id="2Id-eO-xYU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QEJ-Xm-TCC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="418.5" y="426"/>
+        </scene>
+        <!--Favorites Table View Controller-->
+        <scene sceneID="F6b-pD-Ddl">
+            <objects>
+                <tableViewController id="iqq-ts-7eV" customClass="FavoritesTableViewController" customModule="FavFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qoc-qd-XzD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="showImageCell" id="Veu-vx-TnA" customClass="FavoriteImageTableViewCell" customModule="FavFlickrPhotos" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Veu-vx-TnA" id="48Y-Lx-tJh">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nSs-Kb-zOL">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="0.0" y="0.0" width="168" height="43.5"/>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDX-Np-O7A">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="176" y="11" width="207" height="21"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="nSs-Kb-zOL"/>
+                                            <exclude reference="lDX-Np-O7A"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="nSs-Kb-zOL"/>
+                                            <include reference="lDX-Np-O7A"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="lDX-Np-O7A" id="FRN-4j-oKn"/>
+                                    <outlet property="favImage" destination="nSs-Kb-zOL" id="wRy-4k-kAR"/>
+                                    <segue destination="Rjj-wZ-2zg" kind="show" identifier="showFullImage" id="FoX-ms-pY0"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iqq-ts-7eV" id="1Mu-E3-znF"/>
+                            <outlet property="delegate" destination="iqq-ts-7eV" id="WhC-En-DeJ"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vl8-hG-09W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1185" y="426"/>
+        </scene>
+        <!--Fav View Controller-->
+        <scene sceneID="xxY-0M-SES">
+            <objects>
+                <viewController id="Rjj-wZ-2zg" customClass="FavViewController" customModule="FavFlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mt8-BX-VQO"/>
+                        <viewControllerLayoutGuide type="bottom" id="gTW-eB-k9x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rLM-qF-a0E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uf4-YK-609">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="40" y="526" width="320" height="21"/>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mXx-bm-ekC">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="40" y="64" width="320" height="440"/>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="uf4-YK-609"/>
+                                <exclude reference="mXx-bm-ekC"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="uf4-YK-609"/>
+                                <include reference="mXx-bm-ekC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="favFullImage" destination="mXx-bm-ekC" id="tmu-wB-DnU"/>
+                        <outlet property="imageTitle" destination="uf4-YK-609" id="EpE-eo-4Uy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTL-ur-Wn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1924.5" y="426"/>
         </scene>
     </scenes>
 </document>
